@@ -1,0 +1,14 @@
+<apex:page controller="StudentClass" id="RegistrationForm">
+    <apex:form >
+        <apex:pageBlock title="Student Registration Form">
+            <apex:pageBlockSection >
+                <apex:inputText label="Name: " value="{!name}" /><br/>
+                <apex:inputText label="Registration: " value="{!reg}" /><br/>
+                <apex:inputText label="Roll Number:" value="{!roll}" /><br/>
+                <apex:commandButton Value="Create" action="{!newRecord}"/>
+                <apex:commandButton value="Update" action="{!updateRecord1}"/>
+                <apex:commandButton Value="Back" action="{!goToMyFirstPage}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

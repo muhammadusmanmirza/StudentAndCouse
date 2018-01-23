@@ -1,0 +1,12 @@
+<apex:page controller="StudentClass" id="EditPage">
+    <apex:form >
+        <apex:pageBlock title="Udate Record" id="EditBlock">
+            <apex:pageBlockSection >
+                <apex:inputField label="Name" /><br/>
+                <apex:inputField label="Registration"/><br/>
+                <apex:inputField label="Roll No"/><br/>
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

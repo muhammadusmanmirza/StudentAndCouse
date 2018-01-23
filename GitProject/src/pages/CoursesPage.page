@@ -1,0 +1,34 @@
+<apex:page controller="CourseClass">
+    <apex:form >
+        <apex:pageBlock title="Courses List">
+            <apex:commandButton value="CreateCourse" action="{!createFlag}"/>
+            <apex:pageBlockTable value="{!Courses}" var="course" border="2" rendered="true" rowClasses="even,odd">
+                <apex:column value="{!course.Name}" />
+                <apex:column >
+                    <apex:commandLink value="student" >
+                        <apex:param name="CourseStudentId" assignTo="{!courseStudentId}" value="{!course.Id}"/>
+                    </apex:commandLink>
+                    <apex:commandLink value="Delete" action="{!deleteCourse}">
+                        <apex:param name="courseDeleteId" assignTo="{!courseDeleteId}" value="{!course.Id}"/>
+                    </apex:commandLink>
+                    <apex:commandLink value="Edit">
+                        
+                    </apex:commandLink>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        <apex:pageBlock title="InsertCourse" >
+            <apex:pageBlockSection rendered="{!createCourseFlag}">
+                <apex:inputText label="CourseName: " value="{!coursName}" /><br/>
+                <apex:commandButton value="Create" action="{!createCourse}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock title="Student List">
+            <apex:pageBlockTable value="{!showStudents}" var="student" border="2" rowClasses="even,Odd" >
+            <apex:column value="{!student.Name}"/>
+            <apex:column value="{!student.Registration__c}"/>
+            <apex:column value="{!student.Roll_No__c}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

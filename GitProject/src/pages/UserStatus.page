@@ -1,0 +1,24 @@
+<apex:page >
+    <apex:pageBlock title="User Status">
+        <apex:pageBlockSection columns="1">
+            {!$User.FirstName}{!$User.LastName}
+            {!$User.Username}
+            {!$User.FirstName &' '& $User.LastName}
+            <p>
+                Today Date is {!Today()}<br/>
+                Next week it will be is {!TOday()+7}
+            </p>
+            <p>
+                year one Thounsand months beforce is {!Year(Today())}<br/>
+                Tomorrow day will be the number {!day(Today()+1)}
+            </p>    
+            <p>Is it true?  {! CONTAINS('salesforce.com', 'force.com') }</p>
+            <p>
+                {!If(Contains('SalesForce.com','Force.com'),'Yep','NOpe')}
+            </p>
+            <p>
+                {!IF($User.IsActive,$User.Username,'Inactive')}
+            </p>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

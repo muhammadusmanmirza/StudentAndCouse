@@ -1,0 +1,9 @@
+<apex:page standardController="Contact">
+    <apex:pageBlock title="Contact View">
+        <apex:pageBlockSection columns="1">
+        <!--   <apex:detail relatedList="false"/>-->
+            <apex:relatedList list="Contacts"/>
+            <apex:relatedList list="Opportunities" pageSize="5"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

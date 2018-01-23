@@ -1,0 +1,43 @@
+<apex:page controller="StudentClass" id="ThePage" >
+    <apex:form >
+        <apex:pageblock Title="Student List" id="student_List">
+            <!-- Create To Create Page -->
+            <apex:commandButton Value="Create" action="{!createStud}"/>
+            <apex:commandButton value="Courses" action="{!goToCourses}"/>
+           <apex:pageBlockTable value="{!students}" var="student" id="TheTable" rowClasses="Odd,Even"  border="2" rendered="true">
+     
+              <apex:column value="{!student.Name}"/>
+               <apex:column value="{!student.Roll_No__c}"/>
+               <apex:column value="{!student.Registration__c}"/>
+               <apex:column >
+                   <apex:commandLink value="Edit" action="{!goToUpdate}">
+                       <apex:param name="updateId" assignTo="{!editRecordId}" value="{!student.Id}"/>
+                   </apex:commandLink>
+                       
+                   <apex:commandLink value="Delete" action="{!deleteRecord}">
+                       <apex:param name="deleteId" assignTo="{!deleteId}" value="{!student.Id}"/>
+                   </apex:commandLink>
+                   <apex:commandLink value="Course" action="{!ShowCourse}" reRender="Courses_Id">
+                       <apex:param name="studentId" assignTo="{!CourseId}" value="{!student.Id}"/>
+                   </apex:commandLink>
+               </apex:column>
+    
+           </apex:pageBlockTable> 
+        </apex:pageblock>
+        <apex:pageBlock title="Courses List" id="Courses_Id" >
+            <apex:pageBlockTable value="{!courses}" var="course" rowClasses="Odd,Even" border="1" columns="1" rendered="{! showCourseFlag}">
+                <apex:column value="{!course.Name}"/>
+                <apex:column >
+                    <apex:commandLink value="Delete" Action="{!DeleteCourse}">
+                        <apex:param name="CourseId" assignTo="{!courseId}" value="{!course.id}"/>
+                    </apex:commandLink>
+                </apex:column>
+            </apex:pageBlockTable>
+            <apex:selectList value="{!courseName}" size="1" rendered="{!showCourseFlag}">
+                <apex:selectOptions value="{!Options}"></apex:selectOptions>
+                <!--<apex:actionSupport event="onchange" action="{!myAction}"/>-->
+            </apex:selectList>
+            <apex:commandButton value="Create" action="{!InsertCourse}" rendered="{!showCourseFlag}"/>
+        </apex:pageBlock>
+   </apex:form>
+</apex:page>
