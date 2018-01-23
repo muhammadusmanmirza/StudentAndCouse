@@ -32,7 +32,7 @@ public class CourseClass {
         try{
             insert creCourse;
               showCourse();
-               showCourse();
+              
               
         }
         catch(DmlException e){
