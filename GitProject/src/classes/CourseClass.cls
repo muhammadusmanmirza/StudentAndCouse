@@ -31,7 +31,9 @@ public class CourseClass {
         Course__c creCourse = new Course__c(Name=coursName);
         try{
             insert creCourse;
-            showCourse();
+              showCourse();
+               showCourse();
+              
         }
         catch(DmlException e){
             System.debug(e);
