@@ -1,0 +1,52 @@
+<apex:page controller="StudentClass">
+    
+    <apex:form >
+        <apex:pageBlock title="Student List" >
+            <apex:pageBlockTable value="{!Students}" var="stu" >
+                <apex:column headerValue="Name" >
+                  <apex:commandLink action="{!goToDetail}"> {!stu.Name}
+                       <apex:param name="NameId" assignTo="{!stuRollNo}" value="{!stu.id}"/>
+                  </apex:commandLink>
+                </apex:column>
+                <apex:column headerValue="E-mail" > {!stu.Stu_Email__c}</apex:column>
+                <apex:column headerValue="Roll-No" > {!stu.Roll_No__c}</apex:column>
+                <apex:column headerValue="Registration"> {!stu.RegistrationsNumber__c}</apex:column>
+                <apex:column headerValue="Actions">
+                    <apex:commandLink value="Edit" action="{!goToUpdation}">
+                        <apex:param name="UpdateId" assignTo="{!updateId}" value="{!stu.Id}"/>
+                    </apex:commandLink>
+                    <apex:commandLink value="Delete" action="{!DeleteStu}">
+                        <apex:param name="DeleteId" assignTo="{!deleteId}" value="{!stu.Id}"/>
+                    </apex:commandLink>
+                    <apex:commandLink value="Course" action="{!ShowCourses}">
+                        <apex:param Name="StudentID" assignTo="{!courseId}" value="{!stu.Id}"/>
+                    </apex:commandLink>
+                    <apex:commandLink value="Report" action="{!goToReport}">
+                         <apex:param name="ReportId" assignTo="{!stuRollNo}" value="{!stu.id}"/>
+                    </apex:commandLink>
+                </apex:column>
+                
+            </apex:pageBlockTable>
+            <apex:pageBlockButtons >
+                <apex:commandButton Value="Create" action="{!goToRegistration}"/>
+                <apex:commandButton value="Courses" action="{!goToCourses}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        <apex:pageBlock title="CourseList">
+           <apex:pageBlockTable value="{!courses}" var="cou" rendered="{!showCourseFlag}" >
+               <apex:column headerValue="CourseId" >{!cou.Course_Id__c}</apex:column>
+               <apex:column headerValue="CourseName" >{!cou.Name}</apex:column>
+               <apex:column headerValue="CourseRegistration" >{!cou.CourseRegisNo__c}</apex:column>
+               <apex:column headerValue="Actions">
+                   <apex:commandLink value="Delete" action="{!DelRelCourse}">
+                       <apex:param Name="Delete" assignTo="{!courId}" value="{!cou.Id}"/>
+                   </apex:commandLink>
+               </apex:column>
+            </apex:pageBlockTable>
+           <apex:selectList value="{!courName}" size="1" rendered="{!showCourseFlag}">
+                <apex:selectOptions value="{!Options}"></apex:selectOptions>
+            </apex:selectList>
+            <apex:commandButton value="Create" action="{!InsertCourse}" rendered="{!showCourseFlag}"/>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

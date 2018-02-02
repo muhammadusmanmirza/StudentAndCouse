@@ -1,0 +1,3 @@
+<apex:page showHeader="true" tabStyle="Case" >
+<apex:ListViews type="Student__c" />    
+</apex:page>

@@ -1,0 +1,39 @@
+<apex:page controller="StudentClass">
+    <apex:form >
+        <apex:pageBlock title="Courses">
+            <apex:pageBlockTable value="{!courses}" var="cour" title="Course_List">
+                 <apex:column headerValue="Course Registration">{!cour.Course_Id__c}</apex:column>
+                <apex:column headerValue="Course Name">{!cour.Name}</apex:column>
+                <apex:column headerValue="Course No">{!cour.CourseRegisNo__c}</apex:column>
+                <apex:column headerValue="Actions">
+                    <apex:commandLink value="Delete" action="{!DeleteCourse}">
+                        <apex:param name="DeleteId" assignTo="{!courDeleteId}" value="{cour.Id}"/>
+                    </apex:commandLink>
+                    <apex:commandLink value="Student" action="{!showStudents}">
+                        <apex:param name="StudentId" assignTo="{!courseId}" value="{!cour.Id}"/>
+                    </apex:commandLink>
+                    <apex:commandLink value="Report"></apex:commandLink>
+                </apex:column>
+            </apex:pageBlockTable>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Create" action="{!FlagTrue}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        <apex:pageBlock title="InsertCourse">
+            <apex:pageBlockSection rendered="{!insertCourse}">
+                <apex:inputText label="CourseName:" value="{!courName}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons rendered="{!insertCourse}">
+                <apex:commandButton value="Create" action="{!CreateCourse}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        <apex:pageBlock title="Student List" >
+            <apex:pageBlockTable value="{!Students}" var="stu" rendered="{!showStudentFlag}">
+                <apex:column headerValue="Name">{!stu.Name}</apex:column>
+                <apex:column >{!stu.Roll_No__c}</apex:column>
+                <apex:column headerValue="E-mail">{!stu.Stu_Email__c}</apex:column>
+                <apex:column >{!stu.RegistrationsNumber__c}</apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

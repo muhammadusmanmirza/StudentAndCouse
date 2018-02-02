@@ -1,0 +1,17 @@
+<apex:page controller="StudentClass">
+    <apex:form >
+
+        <apex:pageBlock title="Registration Form" >
+            <apex:pageBlockSection columns="2" >
+                <apex:inputText label="StudentName:" value="{!studName}"/>
+                <apex:inputText label="E-mail:" required="true" value="{!studEmail}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                     <apex:commandButton value="Create" action="{!CreateStudentRecord}" rendered="{!createHideFlage}"/>
+                     <apex:commandButton value="Update" action="{!UpdateStudentRecord}" reRender="{!updateHideFlage}"/>
+                     <apex:commandButton value="Back"  action="{!HomePage}"/>
+                     
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

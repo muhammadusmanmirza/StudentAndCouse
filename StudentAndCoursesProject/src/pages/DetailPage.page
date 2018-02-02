@@ -1,0 +1,20 @@
+<apex:page controller="StudentClass" >
+   <!-- 0067F000006vcHF -->
+    <apex:pageBlock title="StudentDetail" >
+       
+        <apex:pageBlockSection columns="2" >
+            <apex:outputfield value="{!obj.Name}"/>
+            <apex:outputField value="{!obj.Stu_Email__c}"/>
+            <apex:outputtext value="{!obj.Roll_No__c}"/>
+            <apex:outputtext value="{!obj.RegistrationsNumber__c}"/>
+        </apex:pageBlockSection>
+        
+    </apex:pageBlock>
+    <apex:pageBlock title="StudentCourses" >
+        <apex:pageBlockTable value="{!stuAndCou}" var="sac" border="Dotted" summary="Courses">
+            <apex:column headerValue="CourseName" value="{!sac.CourseName__r.Name}"/>
+            <apex:column headerValue="CourseId" value="{!sac.CourseName__r.Course_Id__c}"/>
+            <apex:column headerValue="CourseRegistrationNo" value="{!sac.CourseName__r.CourseRegisNo__c}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>
